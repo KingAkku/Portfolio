@@ -20,10 +20,10 @@ function About() {
             Hi, I'm Akhil Kumar S
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            I'm a passionate Full Stack Developer with 5+ years of experience in
-            building modern web applications and creating seamless user
+            I'm a passionate UI/UX Designer with more than an year of experience. I
+            have worked on multiple web designs and creating seamless user
             experiences. I love turning complex problems into simple, beautiful,
-            and intuitive solutions.
+            and user-friendly solutions.
           </p>
         </div>
 
