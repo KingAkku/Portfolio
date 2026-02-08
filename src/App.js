@@ -1,280 +1,215 @@
-const motion =
-  typeof window !== "undefined" &&
-  window.FramerMotion &&
-  window.FramerMotion.motion
-    ? window.FramerMotion.motion
-    : { div: "div" };
+import { motion } from "framer-motion";
 
-const quickFade = {
+const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const projects = [
+const cards = [
   {
-    title: "Neuro-Canvas",
-    description: "Generative identity system for kinetic brands.",
-    tags: ["Motion", "Identity", "AI"],
+    title: "Cognitive Bento",
+    subtitle: "Systems of focus",
+    description: "A grid of modular thoughts, stacked like product tiles yet breathing like art.",
+    tone: "bg-white",
   },
   {
-    title: "Bento Orbit",
-    description: "Spatial UI kit for product storytelling.",
-    tags: ["UI", "WebGL", "Systems"],
+    title: "Red Shift",
+    subtitle: "Visual momentum",
+    description: "Red accents orbit clean whites to highlight decisive ideas and sharp calls.",
+    tone: "bg-ember text-white",
   },
   {
-    title: "Signal Atlas",
-    description: "Realtime insight dashboard for growth teams.",
-    tags: ["Data", "SaaS", "Ops"],
+    title: "Black Logic",
+    subtitle: "Precision layer",
+    description: "Contrast blocks anchor the story with clarity, tone, and bold structure.",
+    tone: "bg-ink text-white",
   },
-];
-
-const skills = [
-  "Motion-first UI",
-  "Visual systems",
-  "Creative direction",
-  "Prototyping",
-  "Product strategy",
-  "Storytelling",
+  {
+    title: "Human Signal",
+    subtitle: "Profile focus",
+    description: "Designing for people first, with transitions that feel intentional and calm.",
+    tone: "bg-white",
+  },
+  {
+    title: "Futurework",
+    subtitle: "Selected experiments",
+    description: "Interfaces that turn complex workflows into confident, tactile moments.",
+    tone: "bg-snow",
+  },
+  {
+    title: "Launch Ready",
+    subtitle: "Let’s build",
+    description: "A bento-ready system that scales with your ambition and storytelling.",
+    tone: "bg-white",
+  },
 ];
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-black">
-      <div className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-red-100 blur-3xl" />
-        <div className="pointer-events-none absolute left-0 top-20 h-80 w-80 rounded-full bg-black/10 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 right-20 h-72 w-72 rounded-full bg-red-200/60 blur-3xl" />
+    <div className="relative min-h-screen bg-white text-ink">
+      <div className="pointer-events-none absolute inset-0 bg-radial-fade opacity-90" />
+      <div className="noise-overlay pointer-events-none absolute inset-0" />
 
-        <header className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
+      <main className="relative mx-auto flex min-h-screen max-w-6xl flex-col gap-16 px-6 pb-20 pt-10 sm:px-10">
+        <motion.nav
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center justify-between"
+        >
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-2xl bg-black" />
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-red-500">
-                Kairo V
-              </p>
-              <p className="text-xs uppercase tracking-[0.35em] text-black/60">
-                Beyond AI Portfolio
-              </p>
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-ember text-white">
+              V
             </div>
+            <div className="text-sm uppercase tracking-[0.3em] text-ink/70">Vetra Studio</div>
           </div>
-          <nav className="hidden items-center gap-6 text-xs font-semibold uppercase tracking-[0.3em] text-black/60 md:flex">
+          <div className="hidden items-center gap-8 text-sm text-ink/70 md:flex">
             <span>Work</span>
-            <span>Process</span>
+            <span>Labs</span>
+            <span>Manifesto</span>
             <span>Contact</span>
-          </nav>
-          <button className="rounded-full border border-black px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em]">
-            Let&apos;s build
-          </button>
-        </header>
+          </div>
+        </motion.nav>
 
-        <main className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16">
-          <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-            <motion.div
-              variants={quickFade}
-              initial="hidden"
-              animate="show"
-              className="rounded-[32px] border border-black/10 bg-white p-8 shadow-[0_40px_120px_rgba(0,0,0,0.08)]"
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-black/60">
-                20 y.o. UI Veteran
+        <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <motion.div initial="hidden" animate="show" variants={fadeUp} className="space-y-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-ember">
+              Beyond AI Portfolio
+            </p>
+            <h1 className="text-4xl font-semibold leading-tight sm:text-5xl">
+              A 20-year UI veteran crafting interfaces that rewire how humans feel technology.
+            </h1>
+            <p className="max-w-xl text-base text-ink/70 sm:text-lg">
+              This is a bento-style narrative where white space dominates, red punctuates, and black
+              anchors. Each tile is designed as a micro-ecosystem: focused, tactile, and ready for
+              motion.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="rounded-full bg-ember px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-ember/20">
+                Start a Project
+              </button>
+              <button className="rounded-full border border-ink/20 px-6 py-3 text-sm font-semibold text-ink">
+                View Labs
+              </button>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="relative bento-card bento-soft overflow-hidden p-8"
+          >
+            <div className="absolute right-6 top-6 h-24 w-24 rounded-full border border-ink/10" />
+            <div className="absolute bottom-6 left-6 h-12 w-12 rounded-2xl bg-ember" />
+            <div className="space-y-5">
+              <p className="text-xs uppercase tracking-[0.4em] text-ink/60">Signature tile</p>
+              <h2 className="text-2xl font-semibold">Human + Machine Symbiosis</h2>
+              <p className="text-sm text-ink/70">
+                A visual system inspired by future product sheets, softened with gradients, cut by
+                sharp typography, and animated with intentional friction.
               </p>
-              <h1 className="mt-4 text-4xl font-semibold uppercase tracking-[0.15em] md:text-6xl">
-                Redefine
-                <span className="block text-red-500">Human Thinking</span>
-              </h1>
-              <p className="mt-6 text-base leading-relaxed text-black/70">
-                I design bento-first interfaces that feel cinematic, tactile, and
-                radically human. Think of this space as a living blueprint: white
-                silence, black structure, and red energy.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {[
-                  "Framer Motion",
-                  "Tailwind CSS",
-                  "Immersive UI",
-                  "AI Collab",
-                ].map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em]"
-                  >
-                    {item}
-                  </span>
+              <div className="flex items-center gap-3">
+                {Array.from({ length: 3 }).map((_, index) => (
+                  <div
+                    key={`dot-${index}`}
+                    className={`h-2 w-2 rounded-full ${index === 1 ? "bg-ember" : "bg-ink/20"}`}
+                  />
                 ))}
               </div>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <button className="rounded-full bg-black px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-white">
-                  View work
-                </button>
-                <button className="rounded-full border border-black px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em]">
-                  Download deck
-                </button>
-              </div>
-            </motion.div>
+            </div>
+          </motion.div>
+        </section>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+        <section className="grid gap-6 md:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bento-card relative flex min-h-[220px] flex-col justify-between overflow-hidden p-6"
+          >
+            <div className="text-xs uppercase tracking-[0.4em] text-ink/50">Vertical thinking</div>
+            <div className="flex items-end justify-between">
+              <div className="space-y-2">
+                <h3 className="text-2xl font-semibold">Sonic Narrative</h3>
+                <p className="text-sm text-ink/70">
+                  Sound-inspired UI rhythms, layered like analog grooves.
+                </p>
+              </div>
+              <div className="vertical-word text-6xl font-semibold text-ink/15">SONIC</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bento-card flex min-h-[220px] flex-col justify-between bg-ink p-6 text-white"
+          >
+            <div className="text-xs uppercase tracking-[0.4em] text-white/60">Design stack</div>
+            <div className="flex items-end justify-between">
+              <div className="space-y-2">
+                <h3 className="text-2xl font-semibold">Framer Motion</h3>
+                <p className="text-sm text-white/70">
+                  Motion as a storytelling tool, not decoration.
+                </p>
+              </div>
+              <span className="rounded-full border border-white/30 px-3 py-1 text-xs">2024</span>
+            </div>
+          </motion.div>
+        </section>
+
+        <section className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {cards.map((card, index) => (
               <motion.div
-                whileHover={{ y: -6 }}
-                className="rounded-[28px] border border-black/10 bg-black p-6 text-white"
+                key={card.title}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={fadeUp}
+                className={`bento-card flex min-h-[200px] flex-col justify-between p-6 ${card.tone}`}
               >
-                <p className="text-xs uppercase tracking-[0.4em] text-white/60">
-                  Current focus
-                </p>
-                <h2 className="mt-6 text-2xl font-semibold uppercase tracking-[0.1em]">
-                  Beyond AI
-                  <span className="block text-red-400">Storytelling</span>
-                </h2>
-                <p className="mt-4 text-sm text-white/70">
-                  Sculpting interfaces that feel like worlds, not screens.
-                </p>
-              </motion.div>
-              <motion.div
-                whileHover={{ y: -6 }}
-                className="rounded-[28px] border border-black/10 bg-white p-6"
-              >
-                <p className="text-xs uppercase tracking-[0.4em] text-black/50">
-                  Stats
-                </p>
-                <div className="mt-6 space-y-4">
-                  <div>
-                    <p className="text-3xl font-semibold text-black">48+</p>
-                    <p className="text-xs uppercase tracking-[0.3em] text-black/50">
-                      Launches
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-3xl font-semibold text-black">9 yrs</p>
-                    <p className="text-xs uppercase tracking-[0.3em] text-black/50">
-                      Crafting UI
-                    </p>
-                  </div>
+                <div className="text-xs uppercase tracking-[0.4em] opacity-70">{card.subtitle}</div>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-semibold">{card.title}</h3>
+                  <p className="text-sm opacity-70">{card.description}</p>
                 </div>
               </motion.div>
-              <motion.div
-                whileHover={{ y: -6 }}
-                className="rounded-[28px] border border-black/10 bg-white p-6 sm:col-span-2"
-              >
-                <p className="text-xs uppercase tracking-[0.4em] text-black/50">
-                  Bento manifesto
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-black/70">
-                  White space is the stage. Black is the frame. Red is the pulse.
-                  Every card is a scene, every hover a breath.
-                </p>
-              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bento-card bento-soft flex flex-col justify-between gap-6 p-8"
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-xs uppercase tracking-[0.4em] text-ink/60">Availability</span>
+              <span className="rounded-full bg-ember px-3 py-1 text-xs font-semibold text-white">
+                Open 3 Slots
+              </span>
             </div>
-          </section>
-
-          <section className="mt-16 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
-            <motion.div
-              variants={quickFade}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="rounded-[32px] border border-black/10 bg-white p-8"
-            >
-              <p className="text-xs uppercase tracking-[0.4em] text-black/50">
-                Skill matrix
+            <div>
+              <h3 className="text-2xl font-semibold">Let’s design something legendary.</h3>
+              <p className="mt-3 text-sm text-ink/70">
+                Fast sprints, deep research, and polish that honors every pixel. Reach out for a
+                vision session.
               </p>
-              <h3 className="mt-4 text-2xl font-semibold uppercase tracking-[0.2em]">
-                Creative Powers
-              </h3>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em]"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            <div className="grid gap-4">
-              {projects.map((project) => (
-                <motion.div
-                  key={project.title}
-                  whileHover={{ y: -6 }}
-                  className="rounded-[28px] border border-black/10 bg-white p-6"
-                >
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-lg font-semibold uppercase tracking-[0.2em]">
-                      {project.title}
-                    </h4>
-                    <span className="text-xs uppercase tracking-[0.3em] text-red-500">
-                      Case study
-                    </span>
-                  </div>
-                  <p className="mt-3 text-sm text-black/70">
-                    {project.description}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-black/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
             </div>
-          </section>
+            <button className="w-full rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white">
+              Book a Vision Call
+            </button>
+          </motion.div>
+        </section>
 
-          <section className="mt-16 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="rounded-[32px] border border-black/10 bg-white p-8"
-            >
-              <p className="text-xs uppercase tracking-[0.4em] text-black/50">
-                Process
-              </p>
-              <h3 className="mt-4 text-2xl font-semibold uppercase tracking-[0.2em]">
-                Flow in 3 acts
-              </h3>
-              <ol className="mt-6 space-y-4 text-sm text-black/70">
-                <li>
-                  <span className="font-semibold text-black">01</span> - Decode
-                  the problem, map the emotion.
-                </li>
-                <li>
-                  <span className="font-semibold text-black">02</span> - Design
-                  the bento rhythm, choreograph motion.
-                </li>
-                <li>
-                  <span className="font-semibold text-black">03</span> - Ship
-                  the experience, measure the resonance.
-                </li>
-              </ol>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="rounded-[32px] border border-black/10 bg-red-500 p-8 text-white"
-            >
-              <p className="text-xs uppercase tracking-[0.4em] text-white/70">
-                Contact
-              </p>
-              <h3 className="mt-4 text-2xl font-semibold uppercase tracking-[0.2em]">
-                Let&apos;s build
-              </h3>
-              <p className="mt-4 text-sm text-white/80">
-                Looking for a UI veteran to craft your next impossible product?
-              </p>
-              <div className="mt-8 space-y-2 text-sm">
-                <p>hello@kairo.studio</p>
-                <p>Los Angeles · Remote</p>
-              </div>
-              <button className="mt-8 rounded-full bg-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-red-500">
-                Start a project
-              </button>
-            </motion.div>
-          </section>
-        </main>
-      </div>
+        <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-ink/10 pt-6 text-xs uppercase tracking-[0.4em] text-ink/50">
+          <span>2024 Vetra Studio</span>
+          <span>Portfolio system · v1.0</span>
+        </footer>
+      </main>
     </div>
   );
 }
