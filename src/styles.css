@@ -1,4 +1,36 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background: #ffffff;
+}
+
+body {
+  @apply bg-white text-ink;
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+}
+
+.bento-card {
+  @apply rounded-3xl border border-black/10 bg-white shadow-bento;
+}
+
+.bento-soft {
+  background-image: radial-gradient(circle at top right, rgba(230, 54, 46, 0.12), transparent 55%),
+    linear-gradient(135deg, rgba(11, 11, 15, 0.04), transparent 60%);
+}
+
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.vertical-word {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
